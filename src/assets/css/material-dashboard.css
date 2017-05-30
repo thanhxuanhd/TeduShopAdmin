@@ -487,6 +487,26 @@ h2.title {
     height: 100vh;
 }
 
+#loader {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    -webkit-transform: translate3d(0, -50%, 0);
+    -moz-transform: translate3d(0, -50%, 0);
+    -o-transform: translate3d(0, -50%, 0);
+    -ms-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    text-align: center;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    top: 50%;
+}
+
 .wrapper:after {
     display: table;
     clear: both;
@@ -607,23 +627,6 @@ h2.title {
 .full-page[filter-color="red"].lock-page .form-group .form-control,
 .full-page[filter-color="danger"].lock-page .form-group .form-control {
     background-image: linear-gradient(#f44336, #f44336), linear-gradient(#D2D2D2, #D2D2D2);
-}
-
-.full-page[filter-color="rose"]:after {
-    background: rgba(248, 187, 208, 0.56);
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
-    /* Standard syntax */
-}
-
-.full-page[filter-color="rose"].lock-page .form-group .form-control {
-    background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#D2D2D2, #D2D2D2);
 }
 
 .full-page[data-image]:after {

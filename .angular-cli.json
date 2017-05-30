@@ -27,6 +27,7 @@
             "../node_modules/jquery/dist/jquery.min.js",
             "../node_modules/bootstrap/dist/js/bootstrap.min.js",
             "../src/assets/js/material.min.js",
+            "../src/assets/js/bootstrap-notify.js",
             "../src/assets/js/material-dashboard.js"
         ],
         "environmentSource": "environments/environment.ts",
