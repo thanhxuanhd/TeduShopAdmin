@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                        <form method="#" action="#">
+                        <form (ngSubmit)="f.form.valid && login()" name="form" #f="ngForm" novalidate>
                             <div class="card card-login">
                                 <div class="card-header text-center" data-background-color="rose">
                                     <h4 class="card-title">Đăng Nhập</h4>
@@ -46,15 +46,16 @@
                                 <p class="category text-center">
                                     OR
                                 </p>
-                                <div class="card-content">
+                                <div class="card-content" [ngClass]="{hasError: f.submitted && !username.valid}">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
                                             </span>
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label">Tài Khoản</label>
-                                            <input type="input" class="form-control">
+                                            <input type="input" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
                                             <span class="material-input"></span></div>
+                                        <span *ngIf="f.submitted && !username.valid" class="text-danger">Tên Đăng Nhập Bắt Buộc</span>
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon">
@@ -62,12 +63,13 @@
                                             </span>
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label">Mật Khẩu</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required>
                                             <span class="material-input"></span></div>
+                                        <span *ngIf="f.submitted && !password.valid" class="text-danger">Mật Khẩu Bắt Buộc</span>
                                     </div>
                                 </div>
                                 <div class="footer text-center">
-                                    <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Đăng Nhập</button>
+                                    <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg" [(disabled)]="loading">Đăng Nhập</button>
                                 </div>
                             </div>
                         </form>
