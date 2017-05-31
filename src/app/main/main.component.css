@@ -1,3 +1,38 @@
 .footer {
     padding: 0;
 }
+
+.sidebar::before,
+.sidebar::after,
+.off-canvas-sidebar::before,
+.off-canvas-sidebar::after {
+    background-color: #00bcd4;
+}
+
+.sidebar .user a,
+.sidebar .logo .simple-text {
+    color: #fff;
+}
+
+.sidebar .nav li.active>a {
+    color: #00bcd4;
+    background: #fff;
+    font-weight: 500;
+}
+
+.sidebar .nav li.active>a i {
+    color: #00bcd4;
+}
+
+.sidebar .nav li>a {
+    color: #fff;
+}
+
+.sidebar .nav li>a i {
+    color: #fff;
+}
+
+.sidebar .nav i,
+.off-canvas-sidebar .nav i {
+    color: #fff;
+}

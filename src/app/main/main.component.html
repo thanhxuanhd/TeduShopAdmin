@@ -10,13 +10,58 @@
             <i class="material-icons">tune</i> TEDU Shop
         </a>
     </div>
-
-    <div class="sidebar-wrapper">
+    <div class="sidebar-wrapper  ps-container ps-theme-default ps-active-y">
+        <div class="user">
+            <div class="photo">
+                <img src="../assets/img/faces/marc.jpg">
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                           {{user.fullName}}
+                            <b class="caret"></b>
+                        </a>
+                <div class="collapse" id="collapseExample">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">Thông Tin Tài Khoản</a>
+                        </li>
+                        <li>
+                            <a href="#">Đổi mật khẩu</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <ul class="nav">
             <li class="active">
                 <a>
                     <i class="material-icons">dashboard</i>
                     <p>Main</p>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#productNav" aria-expanded="true">
+                    <i class="material-icons">shoping_cart</i>
+                    <p>
+                        Sản phẩm
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse in" aria-expanded="true" id="productNav">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">Danh mục sản phẩm</a>
+                        </li>
+                        <li>
+                            <a href="#">Sản Phẩm</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a>
+                    <i class="material-icons">account_circle</i>
+                    <p>Người Dùng</p>
                 </a>
             </li>
         </ul>
@@ -62,9 +107,7 @@
                             <p class="hidden-lg hidden-md">Profile</p>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a>Thông tin tài khoản</a></li>
                             <li><a (click)="logout()">Đăng xuất</a></li>
-
                         </ul>
                     </li>
                 </ul>

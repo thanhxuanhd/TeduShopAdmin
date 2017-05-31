@@ -23,15 +23,19 @@
             "../src/assets/css/material-dashboard.css",
             "../node_modules/alertifyjs/build/css/alertify.css",
             "../node_modules/alertifyjs/build/css/themes/default.css",
+            "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css",
             "styles.css"
         ],
         "scripts": [
             "../node_modules/jquery/dist/jquery.min.js",
             "../node_modules/bootstrap/dist/js/bootstrap.min.js",
             "../src/assets/js/material.min.js",
+            "../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
+            "../node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
+
             "../src/assets/js/bootstrap-notify.js",
-            "../src/assets/js/material-dashboard.js",
-            "../node_modules/alertifyjs/build/alertify.js"
+            "../node_modules/alertifyjs/build/alertify.js",
+            "../src/assets/js/material-dashboard.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
