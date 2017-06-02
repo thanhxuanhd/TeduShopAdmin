@@ -29,13 +29,10 @@
         "scripts": [
             "../node_modules/jquery/dist/jquery.min.js",
             "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-            "../src/assets/js/material.min.js",
             "../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
             "../node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
-
-            "../src/assets/js/bootstrap-notify.js",
             "../node_modules/alertifyjs/build/alertify.js",
-            "../src/assets/js/material-dashboard.js"
+            "../src/assets/js/bootstrap-notify.js"
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {
