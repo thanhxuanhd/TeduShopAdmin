@@ -47,7 +47,7 @@
                         <b class="caret"></b>
                     </p>
                 </a>
-                <div class="collapse in" aria-expanded="true" id="productNav">
+                <div class="collapse" aria-expanded="true" id="productNav">
                     <ul class="nav">
                         <li>
                             <a href="#">Danh mục sản phẩm</a>
@@ -59,10 +59,23 @@
                 </div>
             </li>
             <li>
-                <a>
+                <a href="#userNav" data-toggle="collapse" aria-expanded="true">
                     <i class="material-icons">account_circle</i>
-                    <p>Người Dùng</p>
+                    <p>
+                        Người Dùng
+                        <b class="caret"></b>
+                    </p>
                 </a>
+                <div class="collapse" aria-expanded="true" id="userNav">
+                    <ul class="nav">
+                        <li>
+                            <a routerLink="/main/user/index" routerLinkActive="active">Tài Khoản</a>
+                        </li>
+                        <li>
+                            <a routerLink="/main/role/index" routerLinkActive="active">Quyền</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
     </div>
