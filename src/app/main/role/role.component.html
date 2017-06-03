@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header card-header-icon" data-background-color="rose">
+            <div class="card-header card-header-icon" data-background-color="blue">
                 <i class="material-icons">assignment</i>
             </div>
             <h4 class="card-title">Danh sách quyền</h4>
@@ -10,23 +10,16 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Job Position</th>
-                                <th>Since</th>
-                                <th class="text-right">Salary</th>
+                                <th>Mã</th>
+                                <th>Tên</th>
                                 <th class="text-right">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Alex Mike</td>
-                                <td>Design</td>
-                                <td>2010</td>
-                                <td class="text-right">€ 92,144</td>
+                            <tr *ngFor="let role of roles">
+                                <td>{{role.Name}}</td>
+                                <td>{{role.Description}}</td>
                                 <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info btn-simple" data-original-title="" title="">
-                                                            <i class="material-icons">person</i>
-                                                        </button>
                                     <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-original-title="" title="">
                                                             <i class="material-icons">edit</i>
                                                         </button>
@@ -38,6 +31,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="col-md-12">
+                <pagination [totalItems]="totalRow" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)" class="pagination-sm" [boundaryLinks]="true"></pagination>
             </div>
         </div>
     </div>

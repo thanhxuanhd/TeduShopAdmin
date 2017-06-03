@@ -1,32 +1,7 @@
-/*!
-    
- =========================================================
- * Material Dashboard - v1.1.1.0
- =========================================================
- 
- * Product Page: http://www.creative-tim.com/product/material-dashboard
- * Copyright 2017 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/material-dashboard/blob/master/LICENSE.md)
- 
- =========================================================
- 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- 
- */
-
-
-/* ANIMATION */
-
-
-/* SHADOWS */
-
-
-/* Shadows (from mdl http://www.getmdl.io/) */
-
 .noUi-target,
 .noUi-target * {
     -webkit-touch-callout: none;
-    -ms-touch-action: none;
+    /*-ms-touch-action: none;*/
     user-select: none;
     box-sizing: border-box;
 }
@@ -198,26 +173,6 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
-
-#loader {
-    position: absolute;
-    display: block;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 1;
-    -webkit-transform: translate3d(0, -50%, 0);
-    -moz-transform: translate3d(0, -50%, 0);
-    -o-transform: translate3d(0, -50%, 0);
-    -ms-transform: translate3d(0, -50%, 0);
-    transform: translate3d(0, -50%, 0);
-    text-align: center;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    top: 50%;
-}
 
 .animated {
     -webkit-animation-duration: 1s;
@@ -777,14 +732,15 @@ body.swal2-iosfix {
     margin: 0 5px;
 }
 
-@supports (-ms-accelerator: true) {
+
+/*@supports (-ms-accelerator: true) {
     .swal2-range input {
         width: 100% !important;
     }
     .swal2-range output {
         display: none;
     }
-}
+}*/
 
 @media all and (-ms-high-contrast: none),
 (-ms-high-contrast: active) {
@@ -5792,11 +5748,12 @@ select.selectpicker {
     -ms-overflow-style: none;
 }
 
-@supports (-ms-overflow-style: none) {
+
+/*@supports (-ms-overflow-style: none) {
     .ps-container {
         overflow: auto !important;
     }
-}
+}*/
 
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) {
@@ -8773,9 +8730,10 @@ fieldset[disabled] .form-group .form-control {
     margin-top: -11px;
 }
 
-.form-group select {
+
+/*.form-group select {
     appearance: none;
-}
+}*/
 
 .form-group select~.material-input:after {
     display: none;
@@ -11198,7 +11156,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     border-radius: 10px;
     text-align: center;
     line-height: 19px;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     display: block;
 }
 
@@ -11770,13 +11728,12 @@ fieldset[disabled] .navbar .btn-link:focus {
 }
 
 @media (max-width: 1199px) {
-    .navbar {
+    /*.navbar {
         /*
         .navbar-form {
           margin-top: 10px;
         }
-    */
-    }
+    }*/
     .navbar .navbar-brand {
         height: 50px;
         padding: 10px 15px;
@@ -12108,10 +12065,11 @@ footer .btn {
     margin-bottom: 3px;
 }
 
-.card .card-title:not(.card-calendar .card-title) {
+
+/*.card .card-title:not(.card-calendar .card-title) {
     margin-top: 0;
     margin-bottom: 5px;
-}
+}*/
 
 .card .card-image {
     height: 60%;
@@ -13480,7 +13438,7 @@ footer .btn {
         display: none;
     }
     .navbar-fixed-top {
-        -webkit-backface-visibility: hidden;
+        /*-webkit-backface-visibility: hidden;*/
     }
     #bodyClick {
         height: 100%;

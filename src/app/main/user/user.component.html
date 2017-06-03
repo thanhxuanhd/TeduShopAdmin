@@ -1,3 +1,42 @@
-<p>
-  user works!
-</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="blue">
+                <i class="material-icons">assignment</i>
+            </div>
+            <h4 class="card-title">Danh sách người dùng</h4>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên</th>
+                                <th>Ngày sinh</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of listUsers">
+                                <td>{{user.UserName}}</td>
+                                <td>{{user.Email}}</td>
+                                <td>{{user.BirthDay}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-original-title="" title="">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-original-title="" title="">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <pagination [totalItems]="totalRow" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)" class="pagination-sm" [boundaryLinks]="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
