@@ -40,7 +40,7 @@ export class DataService {
   delete(url: string, key: string, id: string) {
     this.headers.delete("Authorization");
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.put(SystemConstants.BASE_API + url + '/?' + key + '=' + id, { headers: this.headers }).map(this.ExtraData);
+    return this._http.delete(SystemConstants.BASE_API + url + '/?' + key + '=' + id, { headers: this.headers }).map(this.ExtraData);
   }
   postFile(url: string, data?: any) {
     let newHeader: Headers;

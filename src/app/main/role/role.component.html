@@ -1,5 +1,10 @@
 <div class="row">
     <div class="col-md-12">
+        <button class="btn btn-info" (click)="showModalCreate()">
+            <i class="material-icons">create</i> Tạo mới
+        </button>
+    </div>
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="blue">
                 <i class="material-icons">assignment</i>
@@ -12,20 +17,20 @@
                             <tr>
                                 <th>Mã</th>
                                 <th>Tên</th>
-                                <th class="text-right">Actions</th>
+                                <th class="">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let role of roles">
                                 <td>{{role.Name}}</td>
                                 <td>{{role.Description}}</td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-original-title="" title="">
-                                                            <i class="material-icons">edit</i>
-                                                        </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-original-title="" title="">
-                                                            <i class="material-icons">close</i>
-                                                        </button>
+                                <td class="td-actions">
+                                    <button type="button" rel="tooltip" class="btn btn-success btn-simple" (click)="showModalEdit(role.Id)" data-original-title="Sửa quyền" title="Sửa quyền">
+                                         <i class="material-icons">edit</i>
+                                     </button>
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="deleteItem(role.Id)" data-original-title="Xóa Quyền" title="Xóa Quyền">
+                                         <i class="material-icons">close</i>
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -34,6 +39,48 @@
             </div>
             <div class="col-md-12">
                 <pagination [totalItems]="totalRow" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)" class="pagination-sm" [boundaryLinks]="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal add-edit-->
+<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{modalTitle}}</h4>
+                <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form novalidate #addEditForm="ngForm" (ngSubmit)="saveChange(addEditForm.valid)" *ngIf="entity">
+                    <div class="form-group">
+                        <input type="hidden" [(ngModel)]="entity.Id" name="Id">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tên quyền</label>
+                        <input type="text" #name="ngModel" [(ngModel)]="entity.Name" required minlength="3" class="form-control" name="name">
+                        <small [hidden]="name.valid || (name.pristine && !addEditForm.submitted)" class="text-danger">
+                                 Bạn phải nhập tên ít nhất ba ký tự
+                                </small>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Mô tải</label>
+                        <textarea class="form-control" rows="3" #description="ngModel" [(ngModel)]="entity.Description" required class="form-control" name="description"></textarea>
+                        <small [hidden]="description.valid || (description.pristine && !addEditForm.submitted)" class="text-danger">
+                                    Bạn phải nhập mô tả
+                                </small>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default" type="button" (click)="addEditModal.hide()">
+                               Hủy bỏ
+                          </button>
+                        <button class="btn btn-success" type="submit" [disabled]="!addEditForm.form.valid">
+                               <i class="material-icons">{{modalButtonIcon}}</i> {{modalButton}}
+                          </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

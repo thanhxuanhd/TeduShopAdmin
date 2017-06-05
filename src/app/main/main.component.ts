@@ -4,6 +4,7 @@ import { SystemConstants } from '../core/common/system.constants';
 import { UrlConstants } from '../core/common/url.constants';
 import { AuthenService } from '../core/services/authen.service';
 import { LoggedInUser } from '../core/domain/loginin.user';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -17,6 +18,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem(SystemConstants.CURRENT_USER));
+      $.getScript('../assets/js/material.min.js');
+      $.getScript('../assets/js/material-dashboard.js');
   }
   logout() {
     localStorage.removeItem(SystemConstants.CURRENT_USER);

@@ -4,6 +4,7 @@ import { AuthenService } from '../core/services/authen.service';
 import { MessageContstants } from '../core/common/message.constants';
 import { UrlConstants } from '../core/common/url.constants';
 import { Router } from '@angular/router';
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,6 +19,8 @@ export class LoginComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
+    $.getScript('../assets/js/material.min.js');
+    $.getScript('../assets/js/material-dashboard.js');
   }
 
   login() {
