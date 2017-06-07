@@ -32,7 +32,14 @@
             "../node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js",
             "../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js",
             "../node_modules/alertifyjs/build/alertify.js",
-            "../src/assets/js/bootstrap-notify.js"
+            "../src/assets/js/bootstrap-notify.js",
+            "../node_modules/moment/moment.js",
+            "../node_modules/globalize/dist/globalize.js",
+            "../node_modules/globalize/dist/globalize/message.js",
+            "../node_modules/globalize/dist/globalize/number.js",
+            "../node_modules/globalize/dist/globalize/currency.js",
+            "../node_modules/globalize/dist/globalize/date.js"
+
         ],
         "environmentSource": "environments/environment.ts",
         "environments": {

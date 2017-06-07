@@ -61,11 +61,7 @@ export class RoleComponent implements OnInit {
     this.modalButton = "Thêm mới";
     this.modalButtonIcon = "save";
     this.entity = {};
-    debugger;
     this.addEditModal.show();
-    if (this.addEditForm) {
-      this.addEditForm.resetForm();
-    }
   }
 
   showModalEdit(roleId) {
@@ -73,10 +69,6 @@ export class RoleComponent implements OnInit {
     this.modalButton = "Cập nhật";
     this.modalButtonIcon = "mode_edit";
     this.loadRole(roleId);
-    debugger;
-    if (this.addEditForm) {
-      this.addEditForm.resetForm();
-    }
     this.addEditModal.show();
   }
   showModalDelete(roeId) {
