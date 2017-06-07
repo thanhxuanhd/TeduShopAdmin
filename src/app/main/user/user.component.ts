@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../core/services/data.service';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+  @ViewChild('addEditModal') public addEditModal: ModalDirective;
   public listUsers: any[];
   public pageIndex: number = 1;
   public pageSize: number = 20;
@@ -14,6 +15,10 @@ export class UserComponent implements OnInit {
   public keyword: string = '';
   public totalRow: number;
   public productCategoryId: any;
+  public modalTitle: string = '';
+  public modalButton: string = '';
+  public modalButtonIcon: string = '';
+  public entity: any;
 
   constructor(private _dataservice: DataService) { }
 
@@ -22,7 +27,7 @@ export class UserComponent implements OnInit {
   }
 
   loadData() {
-    let url = 'api/appUser/getlistpaging?categoryId='+this.productCategoryId+'&page=' +
+    let url = 'api/appUser/getlistpaging?categoryId=' + this.productCategoryId + '&page=' +
       this.pageIndex + '&pageSize=' + this.pageSize + '&keyword=' + this.keyword;
     this._dataservice.get(url)
       .subscribe((response: any) => {
@@ -37,5 +42,12 @@ export class UserComponent implements OnInit {
   pageChanged(event: any) {
     this.loadData();
   }
-
+  
+  showModalCreate() {
+    this.modalTitle = "Tạo mới quyền";
+    this.modalButton = "Thêm mới";
+    this.modalButtonIcon = "save";
+    this.entity = {};
+    this.addEditModal.show();
+  }
 }

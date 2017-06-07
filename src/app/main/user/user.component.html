@@ -1,5 +1,12 @@
 <div class="row">
     <div class="col-md-12">
+        <button class="btn btn-info pull-right" (click)="showModalCreate()">
+            <i class="material-icons">create</i> Tạo mới
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="blue">
                 <i class="material-icons">assignment</i>
@@ -36,6 +43,84 @@
             </div>
             <div class="col-md-12">
                 <pagination [totalItems]="totalRow" [itemsPerPage]="pageSize" (pageChanged)="pageChanged($event)" class="pagination-sm" [boundaryLinks]="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--modal add-edit-->
+<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">{{modalTitle}}</h4>
+                <button type="button" class="close pull-right" (click)="addEditModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form novalidate #addEditForm="ngForm" (ngSubmit)="saveChange(addEditForm.valid)" *ngIf="entity">
+                    <div class="form-group">
+                        <input type="hidden" [(ngModel)]="entity.Id" name="Id">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Họ Tên</label>
+                        <input type="text" #fullName="ngModel" [(ngModel)]="entity.FullName" required minlength="3" class="form-control" name="fullName">
+                        <span [hidden]="fullName.valid || (fullName.pristine && !addEditForm.submitted)" class="text-danger">
+                                 Bạn phải nhập tên ít nhất ba ký tự
+                                </span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Tài Khoản</label>
+                        <input type="text" #userName="ngModel" [(ngModel)]="entity.UserName" required minlength="3" class="form-control" name="userName">
+                        <span [hidden]="userName.valid || (userName.pristine && !addEditForm.submitted)" class="text-danger">
+                                 Bạn phải nhập tên ít nhất ba ký tự
+                                </span>
+                    </div>
+                    <div class="form-group" *ngIf="!entity.Id">
+                        <label class="control-label">Mật Khẩu</label>
+                        <input type="password" #password="ngModel" [(ngModel)]="entity.Password" required minlength="6" class="form-control" name="password">
+                        <span [hidden]="password.valid || (password.pristine && !addEditForm.submitted)" class="text-danger">
+                                   Bạn phải nhập mật khẩu ít nhất 6 ký tự
+                                </span>
+                    </div>
+                    <div class="form-group" *ngIf="!entity.Id">
+                        <label class="control-label">Nhập Lại Khẩu</label>
+                        <input type="password" #confirmPassword="ngModel" [(ngModel)]="entity.ConfirmPassword" required minlength="6" class="form-control" name="confirmPassword">
+                        <span [hidden]="confirmPassword.valid || (confirmPassword.pristine && !addEditForm.submitted)" class="text-danger">
+                                   Bạn phải nhập mật khẩu ít nhất 6 ký tự
+                                </span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <input type="text" #email="ngModel" [(ngModel)]="entity.Email" required minlength="6" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="Email">
+                        <span [hidden]="email.valid || (email.pristine && !addEditForm.submitted)" class="text-danger">
+                                   Bạn phải nhập Email
+                                </span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Địa chỉ</label>
+                        <input type="text" #address="ngModel" [(ngModel)]="entity.Address" class="form-control" name="address">
+                        <span [hidden]="email.valid || (email.pristine && !addEditForm.submitted)" class="text-danger">
+                                   Bạn phải nhập địa chỉ
+                                </span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Avatar</label>
+                        <input type="file" #avatar name="avatar" class="form-control">
+                        <p class="help-block label label-danger"> chỉ hỗ trợ định dạng *.png, *.jpg, *.jpeg </p>
+                        <input type="hidden" [(ngModel)]="entity.Avatar" name="avatarUrl" />
+
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default" type="button" (click)="addEditModal.hide()">
+                               Hủy bỏ
+                          </button>
+                        <button class="btn btn-success" type="submit" [disabled]="!addEditForm.form.valid">
+                               <i class="material-icons">{{modalButtonIcon}}</i> {{modalButton}}
+                          </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

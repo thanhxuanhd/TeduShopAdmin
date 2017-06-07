@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { DataService } from '../../core/services/data.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { MessageContstants } from '../../core/common/message.constants';
@@ -19,6 +20,9 @@ export class RoleComponent implements OnInit {
   public modalButton: string = '';
   public modalButtonIcon: string = '';
   public entity: any;
+
+  @ViewChild('addEditForm') public addEditForm: NgForm;
+
   @ViewChild('addEditModal') public addEditModal: ModalDirective;
   constructor(
     private _dataService: DataService,
@@ -57,7 +61,11 @@ export class RoleComponent implements OnInit {
     this.modalButton = "Thêm mới";
     this.modalButtonIcon = "save";
     this.entity = {};
+    debugger;
     this.addEditModal.show();
+    if (this.addEditForm) {
+      this.addEditForm.resetForm();
+    }
   }
 
   showModalEdit(roleId) {
@@ -65,6 +73,10 @@ export class RoleComponent implements OnInit {
     this.modalButton = "Cập nhật";
     this.modalButtonIcon = "mode_edit";
     this.loadRole(roleId);
+    debugger;
+    if (this.addEditForm) {
+      this.addEditForm.resetForm();
+    }
     this.addEditModal.show();
   }
   showModalDelete(roeId) {
@@ -77,6 +89,7 @@ export class RoleComponent implements OnInit {
           .subscribe((response: any) => {
             this.loadData();
             this.addEditModal.hide();
+            this.addEditForm.resetForm();
             this._notificationService.printSuccessMessage(MessageContstants.CREATED_OK_MSG);
           }, error => {
             this._dataService.handleError(error);
@@ -86,12 +99,13 @@ export class RoleComponent implements OnInit {
           .subscribe((response: any) => {
             this.loadData();
             this.addEditModal.hide();
+            this.addEditForm.resetForm();
             this._notificationService.printSuccessMessage(MessageContstants.UPDATED_OK_MSG);
           }, error => this._dataService.handleError(error));
       }
     }
   }
-   deleteItem(id: any) {
+  deleteItem(id: any) {
     this._notificationService.printConfirmationDialog(MessageContstants.CONFIRM_DELETE_MSG, () => this.deleteItemConfirm(id));
   }
   deleteItemConfirm(id: any) {

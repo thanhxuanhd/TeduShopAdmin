@@ -7,11 +7,13 @@ import { userRouter } from './user.router';
 import { DataService } from '../../core/services/data.service';
 import { NotificationService } from '../../core/services/notification.service';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     PaginationModule.forRoot(),
+    ModalModule.forRoot(),
     RouterModule.forChild(userRouter)
   ],
   providers: [DataService, NotificationService],
