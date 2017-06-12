@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { UntilityService } from './untility.service';
+import { UtilityService } from './utility.service';
 
 describe('UntilityService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UntilityService]
+      providers: [UtilityService]
     });
   });
 
-  it('should ...', inject([UntilityService], (service: UntilityService) => {
+  it('should ...', inject([UtilityService], (service: UtilityService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntilityService } from '../core/services/untility.service';
+import { UtilityService } from '../core/services/utility.service';
 import { SystemConstants } from '../core/common/system.constants';
 import { UrlConstants } from '../core/common/url.constants';
 import { AuthenService } from '../core/services/authen.service';
@@ -13,7 +13,7 @@ declare var $: any;
 export class MainComponent implements OnInit {
   user: LoggedInUser;
   constructor(
-    private _untilityService: UntilityService,
+    private _untilityService: UtilityService,
     private authenService: AuthenService) { }
 
   ngOnInit() {

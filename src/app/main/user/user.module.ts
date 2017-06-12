@@ -10,6 +10,9 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { Daterangepicker } from 'ng2-daterangepicker';
+import { UploadService } from '../../core/services/upload.service';
+import { DateFormatsPipe } from '../../core/common/date.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +23,7 @@ import { Daterangepicker } from 'ng2-daterangepicker';
     ModalModule.forRoot(),
     RouterModule.forChild(userRouter)
   ],
-  providers: [DataService, NotificationService],
-  declarations: [UserComponent]
+  providers: [DataService, NotificationService, UploadService],
+  declarations: [UserComponent, DateFormatsPipe]
 })
 export class UserModule { }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SystemConstants } from '../../core/common/system.constants';
 import { AuthenService } from '../../core/services/authen.service';
 import { NotificationService } from './notification.service';
-import { UntilityService } from './untility.service';
+import { UtilityService } from './utility.service';
 import { MessageContstants } from './../common/message.constants';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
@@ -15,7 +15,7 @@ export class DataService {
     private _router: Router,
     private _authenService: AuthenService,
     private _notificationService: NotificationService,
-    private _utilityService: UntilityService) {
+    private _utilityService: UtilityService) {
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
   }
@@ -28,6 +28,7 @@ export class DataService {
     return this._http.get(SystemConstants.BASE_API + url, { headers: this.headers }).map(this.ExtraData);
   }
   post(url: string, data?: any) {
+    debugger;
     this.headers.delete("Authorization");
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
     return this._http.post(SystemConstants.BASE_API + url, data, { headers: this.headers }).map(this.ExtraData);
@@ -43,9 +44,11 @@ export class DataService {
     return this._http.delete(SystemConstants.BASE_API + url + '/?' + key + '=' + id, { headers: this.headers }).map(this.ExtraData);
   }
   postFile(url: string, data?: any) {
-    let newHeader: Headers;
+    let newHeader = new Headers();
+    debugger;
     newHeader.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.post(SystemConstants.BASE_API + url, { headers: newHeader }).map(this.ExtraData);
+    return this._http.post(SystemConstants.BASE_API + url, data, { headers: newHeader })
+      .map(this.ExtraData);
   }
 
   private ExtraData(response: Response) {

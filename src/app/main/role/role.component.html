@@ -1,5 +1,14 @@
 <div class="row">
     <div class="col-md-12">
+        <div class="input-group col-md-6 col-md-push-6">
+            <input type="text" class="form-control" (keyup.enter)="loadData()" placeholder="Search" name="filter" [(ngModel)]="filter"/>
+            <span class="input-group-btn">
+            <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="loadData()">
+			     <i class="material-icons">search</i><div class="ripple-container"></div>
+			</button>
+      </span>
+        </div>
+
         <button class="btn btn-info pull-right" (click)="showModalCreate();">   
             <i class="material-icons">create</i> Tạo mới
         </button>
@@ -27,10 +36,12 @@
                                 <td>{{role.Name}}</td>
                                 <td>{{role.Description}}</td>
                                 <td class="td-actions">
-                                    <button type="button" rel="tooltip" class="btn btn-success btn-simple" (click)="showModalEdit(role.Id);" data-original-title="Sửa quyền" title="Sửa quyền">
+                                    <button type="button" rel="tooltip" class="btn btn-success btn-simple" (click)="showModalEdit(role.Id);" data-original-title="Sửa quyền"
+                                        title="Sửa quyền">
                                          <i class="material-icons">edit</i>
                                      </button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="deleteItem(role.Id)" data-original-title="Xóa Quyền" title="Xóa Quyền">
+                                    <button type="button" rel="tooltip" class="btn btn-danger btn-simple" (click)="deleteItem(role.Id)" data-original-title="Xóa Quyền"
+                                        title="Xóa Quyền">
                                          <i class="material-icons">close</i>
                                     </button>
                                 </td>
@@ -46,7 +57,8 @@
     </div>
 </div>
 <!--modal add-edit-->
-<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -69,7 +81,8 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Mô tải</label>
-                        <textarea class="form-control" rows="3" #description="ngModel" [(ngModel)]="entity.Description" required class="form-control" name="description"></textarea>
+                        <textarea class="form-control" rows="3" #description="ngModel" [(ngModel)]="entity.Description" required class="form-control"
+                            name="description"></textarea>
                         <small [hidden]="description.valid || (description.pristine && !addEditForm.submitted)" class="text-danger">
                                     Bạn phải nhập mô tả
                                 </small>
