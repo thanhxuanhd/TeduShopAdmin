@@ -13,5 +13,4 @@ export class DateFormatsPipe implements PipeTransform {
     }
     return dateFormats;
   }
-
 }

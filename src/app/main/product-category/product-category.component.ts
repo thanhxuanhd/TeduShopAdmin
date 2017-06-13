@@ -18,7 +18,7 @@ export class ProductCategoryComponent implements OnInit {
     this.loadData();
   }
   loadData() {
-    let url = 'api/productCategory/getall?page=' + this.pageIndex + '&pageSize=' + this.pageSize + '&keyword=' + this.filter;
+    let url = '/api/productCategory/getall?page=' + this.pageIndex + '&pageSize=' + this.pageSize + '&keyword=' + this.filter;
     this._dataservice.get(url)
       .subscribe((response: any) => {
         this.productCategorys = response.Items;

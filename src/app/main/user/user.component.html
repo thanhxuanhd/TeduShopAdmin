@@ -27,7 +27,7 @@
                             <tr *ngFor="let user of listUsers">
                                 <td>{{user.UserName}}</td>
                                 <td>{{user.Email}}</td>
-                                <td>{{ user.BirthDay | dateFormats}}
+                                <td>{{ user.BirthDay | date:'dd/MM/yyyy'}}
                                 </td>
                                 <td class="td-actions text-right">
                                     <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-original-title="" title="" (click)="showModalEdit(user.Id)">
@@ -50,8 +50,7 @@
 </div>
 
 <!--modal add-edit-->
-<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+<div bsModal #addEditModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -88,16 +87,14 @@
                     </div>
                     <div class="form-group is-empty" *ngIf="!entity.Id">
                         <label class="control-label  ">Nhập Lại Khẩu</label>
-                        <input type="password" #confirmPassword="ngModel" [(ngModel)]="entity.ConfirmPassword" required minlength="6" class="form-control"
-                            name="confirmPassword">
+                        <input type="password" #confirmPassword="ngModel" [(ngModel)]="entity.ConfirmPassword" required minlength="6" class="form-control" name="confirmPassword">
                         <span [hidden]="confirmPassword.valid || (confirmPassword.pristine && !addEditForm.submitted)" class="text-danger">
                                    Bạn phải nhập mật khẩu ít nhất 6 ký tự
                                 </span>
                     </div>
                     <div class="form-group is-empty">
                         <label class="control-label ">Email</label>
-                        <input type="text" #email="ngModel" [(ngModel)]="entity.Email" required minlength="6" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                            class="form-control" name="Email">
+                        <input type="text" #email="ngModel" [(ngModel)]="entity.Email" required minlength="6" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="Email">
                         <span [hidden]="email.valid || (email.pristine && !addEditForm.submitted)" class="text-danger">
                                    Bạn phải nhập Email
                                 </span>
@@ -131,16 +128,13 @@
                     </div>
                     <div class="form-group is-empty">
                         <label class="control-label">Ngày sinh</label>
-                        <input type="text" #birthday="ngModel" daterangepicker (selected)="dateSelected($event)" [options]="dateOptions" [(ngModel)]="entity.BirthDay"
-                            name="birthday" class="form-control">
+                        <input type="text" #birthday="ngModel" daterangepicker (selected)="dateSelected($event)" [options]="dateOptions" [(ngModel)]="entity.BirthDay" name="birthday" class="form-control">
                     </div>
                     <div class="form-group ">
                         <label class="control-label">Giới tính</label>
                         <div>
-                            <input type="radio" (change)="selectGender($event)" #gender="ngModel" [checked]="entity.Gender=='True'" name="gender" [ngModel]="entity.Gender"
-                                value="True" required /> Nam
-                            <input type="radio" (change)="selectGender($event)" #gender="ngModel" [checked]="entity.Gender=='False'" name="gender" [ngModel]="entity.Gender"
-                                value="False" /> Nữ
+                            <input type="radio" (change)="selectGender($event)" #gender="ngModel" [checked]="entity.Gender=='True'" name="gender" [ngModel]="entity.Gender" value="True" required /> Nam
+                            <input type="radio" (change)="selectGender($event)" #gender="ngModel" [checked]="entity.Gender=='False'" name="gender" [ngModel]="entity.Gender" value="False" /> Nữ
                         </div>
                     </div>
                     <div class="form-group">

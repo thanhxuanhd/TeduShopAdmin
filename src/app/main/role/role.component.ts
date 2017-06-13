@@ -33,7 +33,7 @@ export class RoleComponent implements OnInit {
   }
 
   loadData() {
-    let url = 'api/appRole/getlistpaging?page=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter;
+    let url = '/api/appRole/getlistpaging?page=' + this.pageIndex + '&pageSize=' + this.pageSize + '&filter=' + this.filter;
     this._dataService.get(url)
       .subscribe((response: any) => {
         this.roles = response.Items;
@@ -77,7 +77,7 @@ export class RoleComponent implements OnInit {
   saveChange(isvalidForm) {
     if (isvalidForm) {
       if (this.entity.Id == undefined) {
-        this._dataService.post('api/appRole/add', JSON.stringify(this.entity))
+        this._dataService.post('/api/appRole/add', JSON.stringify(this.entity))
           .subscribe((response: any) => {
             this.loadData();
             this.addEditModal.hide();

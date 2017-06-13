@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
   }
 
   loadData() {
-    let url = 'api/appUser/getlistpaging?categoryId=' + this.productCategoryId + '&page=' +
+    let url = '/api/appUser/getlistpaging?categoryId=' + this.productCategoryId + '&page=' +
       this.pageIndex + '&pageSize=' + this.pageSize + '&keyword=' + this.keyword;
     this._dataService.get(url)
       .subscribe((response: any) => {
@@ -97,7 +97,7 @@ export class UserComponent implements OnInit {
         }
         if (this.entity.BirthDay) {
           var date = new Date(this.entity.BirthDay);
-          this.entity.BirthDay = moment(this.entity.BirthDay, 'MM/DD/YYYY').format('DD/MM/YYYY');
+          this.entity.BirthDay = moment(date,"ISO_8601").format('DD/MM/YYYY');
         }
       });
   }
@@ -106,7 +106,7 @@ export class UserComponent implements OnInit {
       this.entity.Roles = this.myRoles;
       let fi = this.avatar.nativeElement;
       if (fi.files.length > 0) {
-        this._uploadService.postWithFile('/api/upload/saveImage', null, fi.files)
+        this._uploadService.postWithFile('/api/upload/saveImage?type=avatar', null, fi.files)
           .then((imageUrl: string) => {
             this.entity.Avatar = imageUrl;
           }).then(() => {

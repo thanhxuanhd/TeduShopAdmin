@@ -22,7 +22,7 @@ export class FunctionComponent implements OnInit {
   }
 
   loadData() {
-    let url = 'api/function/getall?&filter=' + this.filter;
+    let url = '/api/function/getall?&filter=' + this.filter;
     this._dataservice.get(url)
       .subscribe((response: any) => {
         this.listFunctions = response;

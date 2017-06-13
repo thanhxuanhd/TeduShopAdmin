@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
   }
 
   loadData() {
-    let url = 'api/product/getall?categoryId='+this.productCategoryId+'&page=' +
+    let url = '/api/product/getall?categoryId='+this.productCategoryId+'&page=' +
       this.pageIndex + '&pageSize=' + this.pageSize + '&keyword=' + this.keyword;
     this._dataservice.get(url)
       .subscribe((response: any) => {
