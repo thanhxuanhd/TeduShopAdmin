@@ -43,13 +43,13 @@ export class DataService {
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
     return this._http.delete(SystemConstants.BASE_API + url + '/?' + key + '=' + id, { headers: this.headers }).map(this.ExtraData);
   }
-  postFile(url: string, data?: any) {
+  
+ postFile(uri: string, data?: any) {
     let newHeader = new Headers();
-    debugger;
     newHeader.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
-    return this._http.post(SystemConstants.BASE_API + url, data, { headers: newHeader })
+    return this._http.post(SystemConstants.BASE_API + uri, data, { headers: newHeader })
       .map(this.ExtraData);
-  }
+}
 
   private ExtraData(response: Response) {
     let body = response.json();

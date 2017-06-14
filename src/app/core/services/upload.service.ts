@@ -5,16 +5,15 @@ import { UrlConstants } from '../../core/common/url.constants';
 
 @Injectable()
 export class UploadService {
-
   public responseData: any;
 
   constructor(private dataService: DataService, private utilityService: UtilityService) { }
 
   postWithFile(url: string, postData: any, files: File[]) {
-
     let formData: FormData = new FormData();
-    formData.append('files', files[0], files[0].name);
-
+    formData.append('files', files[0]);
+    
+    debugger;
     if (postData !== "" && postData !== undefined && postData !== null) {
       for (var property in postData) {
         if (postData.hasOwnProperty(property)) {

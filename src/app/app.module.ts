@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { appRouters } from './app.router'
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { AuthGuard } from './core/guards/auth.guard';
     HttpModule,
     RouterModule.forRoot(appRouters)
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
