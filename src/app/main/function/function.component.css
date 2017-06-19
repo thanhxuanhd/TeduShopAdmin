@@ -2,14 +2,10 @@
   width: 300px;
 }
 
-.node-content-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+tree-node-content{
+  width: 100%;
 }
-
-.node-content-wrapper {
-  flex-grow: 1;
-  position: relative;
-  width:auto;
+.link-icon{
+  font-size: 18px;
+  /*color: #2196F3;*/
 }

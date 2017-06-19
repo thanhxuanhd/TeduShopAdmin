@@ -18,8 +18,9 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem(SystemConstants.CURRENT_USER));
-    $.getScript('../assets/js/material.min.js');
     $.getScript('../assets/js/material-dashboard.js');
+    $.material.init();
+
   }
   logout() {
     localStorage.removeItem(SystemConstants.CURRENT_USER);
