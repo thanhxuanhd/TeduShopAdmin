@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
     private _router: Router) { }
 
   ngOnInit() {
-    $.getScript('../assets/js/material.min.js');
     $.getScript('../assets/js/material-dashboard.js');
   }
 

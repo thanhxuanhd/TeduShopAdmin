@@ -7,6 +7,7 @@ import { appRouters } from './app.router'
 import { AppComponent } from './app.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRouters)
   ],
-  providers: [AuthGuard,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [AuthGuard, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

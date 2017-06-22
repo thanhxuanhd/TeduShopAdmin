@@ -4,6 +4,7 @@ import { TreeComponent } from 'angular-tree-component';
 import { NotificationService } from '../../core/services/notification.service';
 import { MessageContstants } from '../../core/common/message.constants';
 import { UtilityService } from '../../core/services/utility.service';
+import { AuthenService } from '../../core/services/authen.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 declare var $: any;
 @Component({
@@ -28,7 +29,9 @@ export class FunctionComponent implements OnInit {
   public _functionId: any;
   constructor(private _dataService: DataService,
     private _notificationService: NotificationService,
-    private _utilityService: UtilityService) { }
+    private _utilityService: UtilityService,
+    public _authenService : AuthenService
+   ) { }
 
   ngOnInit() {
     this.searchData();
@@ -52,6 +55,7 @@ export class FunctionComponent implements OnInit {
 
       });
   }
+
   editFunction(functionId) {
     this.modalTitle = "Chỉnh sửa quyền";
     this.modalButton = "Cập nhật";
@@ -91,6 +95,7 @@ export class FunctionComponent implements OnInit {
       }
     }
   }
+
   showPermisstion(functionId) {
     $.material.init();
     this._dataService.get('/api/appRole/getAllPermission?functionId=' + functionId).subscribe((response: any[]) => {
@@ -98,5 +103,18 @@ export class FunctionComponent implements OnInit {
       this._permission = response;
       this.permissionModal.show();
     }, error => this._dataService.handleError(error));
+  }
+
+  public savePermission(valid: boolean, _permission: any[]) {
+    if (valid) {
+      var data = {
+        Permissions: this._permission,
+        FunctionId: this._functionId
+      }
+      this._dataService.post('/api/appRole/savePermission', JSON.stringify(data)).subscribe((response: any) => {
+        this._notificationService.printSuccessMessage(response);
+        this.permissionModal.hide();
+      }, error => this._dataService.handleError(error));
+    }
   }
 }

@@ -9,13 +9,14 @@ import { NotificationService } from '../../core/services/notification.service';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TreeModule } from 'angular-tree-component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { MdCheckboxModule } from '@angular/material'
 @NgModule({
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     FormsModule,
     ModalModule.forRoot(),
+    MdCheckboxModule,
     TreeModule,
     RouterModule.forChild(functionRouter)
   ],

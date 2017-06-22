@@ -9,7 +9,7 @@ import { AuthenService } from '../core/services/authen.service';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(mainRouter)
+    RouterModule.forChild(mainRouter),
   ],
   providers: [UtilityService, AuthenService],
   declarations: [MainComponent]

@@ -4,12 +4,12 @@
       <input type="text" class="form-control" (keyup.enter)="searchData()" placeholder="Search" name="filter" [(ngModel)]="filter"
       />
       <span class="input-group-btn">
-            <button type="submit" class="btn btn-white btn-round btn-just-icon" (click)="searchData()">
+            <button type="button" class="btn btn-white btn-round btn-just-icon" (click)="searchData()">
 			     <i class="material-icons">search</i><div class="ripple-container"></div>
 			</button>
       </span>
     </div>
-    <button class="btn btn-info pull-right" (click)="createFunction()">
+    <button class="btn btn-info pull-right" (click)="createFunction()" *ngIf="_authenService.hasPermission('USER','create')">
             <i class="material-icons">create</i> Tạo mới
         </button>
   </div>
@@ -28,9 +28,9 @@
               <div class="node-content-wrapper" [class.node-content-wrapper-active]="node.isActive" [class.node-content-wrapper-focused]="node.isFocused"
                 (click)="node.toggleActivated(true)">
                 <span [class]="node.data.className" [class.title]="true">{{ node.data.Name }}</span>
-                <a (click)="showPermisstion(node.data.ID)" class="btn-xs"><i class="material-icons link-icon">lock</i></a>                |
-                <a (click)="editFunction(node.data.ID)" class="btn-xs text-primary"><i class="material-icons link-icon">edit</i></a>                |
-                <a (click)="deleteItemFunction(node.data.ID)" class="btn-xs text-danger"><i class="material-icons link-icon">delete</i></a>
+                <a (click)="showPermisstion(node.data.ID)" *ngIf="_authenService.hasPermission('USER','create')" class="btn-xs"><i class="material-icons link-icon">lock</i></a>                |
+                <a (click)="editFunction(node.data.ID)" *ngIf="_authenService.hasPermission('USER','edit')"class="btn-xs text-primary"><i class="material-icons link-icon">edit</i></a>                |
+                <a (click)="deleteItemFunction(node.data.ID)" *ngIf="_authenService.hasPermission('USER','delete')" class="btn-xs text-danger"><i class="material-icons link-icon">delete</i></a>
               </div>
             </div>
           </ng-template>
@@ -159,56 +159,19 @@
               <div class="col-xs-6">
                 {{permission.AppRole.Description}}
               </div>
-              <div class="col-xs-6">
-                <div class="checkbox">
-                  <label for="permission"> 
-                       <input type="checkbox" 
-                        [(ngModel)]="permission.CanRead" 
-                        [name]="permission.id" 
-                        ngControl="permission"
-                        [value]='permission.CanRead'
-                        name="status" [ngModelOptions]="{standalone: true}"
-                        id='canRead_{{permission.RoleId}}'/> 
-                       Xem
-                    </label>
-                </div>
-                <div class="checkbox">
-                  <label for="permission">
-                        <input type="checkbox"  
-                          ngControl="permission"
-                        [(ngModel)]="permission.CanCreate" 
-                        [name]="permission.id" name="status" 
-                        [ngModelOptions]="{standalone: true}" 
-                        id='canCreate_{{permission.RoleId}}'/> 
-                          Thêm
-                  </label>
-                </div>
-                <div class="checkbox">
-                  <label for="permission">
-                        <input type="checkbox"  
-                          ngControl="permission"
-                        [(ngModel)]="permission.CanUpdate" 
-                        [name]="permission.id" name="status" 
-                        [ngModelOptions]="{standalone: true}" 
-                        id='#canUpdate_{{permission.RoleId}}'/> 
-                            Sửa
-                  </label>
-                </div>
-                <div class="checkbox">
-                  <label for="permission">
-                        <input type="checkbox" 
-                        [(ngModel)]="permission.CanDelete" 
-                          ngControl="permission"
-                        [name]="permission.id" 
-                        name="status" 
-                        [ngModelOptions]="{standalone: true}" 
-                         id='#canDelete{{permission.RoleId}}'/> 
-                            Xóa
-                     </label>
-                </div>
+              <div class="col-xs-6 fom-">
+                <section class="example-section">
+                  <md-checkbox class="example-margin" [(ngModel)]="permission.CanRead" [(ngModel)]="permission.CanRead" [name]="permission.id"
+                    ngControl="permission" [value]='permission.CanRead' name="status" [ngModelOptions]="{standalone: true}">Xem</md-checkbox>
+                  <md-checkbox ngControl="permission" [(ngModel)]="permission.CanCreate" [name]="permission.id" name="status" [ngModelOptions]="{standalone: true}">Thêm</md-checkbox>
+                  <md-checkbox ngControl="permission" [(ngModel)]="permission.CanUpdate" [name]="permission.id" name="status" [ngModelOptions]="{standalone: true}">Sửa</md-checkbox>
+                  <md-checkbox [(ngModel)]="permission.CanDelete" ngControl="permission" [name]="permission.id" name="status" [ngModelOptions]="{standalone: true}">Xóa</md-checkbox>
+                </section>
               </div>
-            </ng-template>
 
+            </ng-template>
+          </div>
+          <div class="form-group">
             <div class="col-xs-12">
               <button type="button" (click)="permissionModal.hide()" class="btn btn-primary">Hủy bỏ</button>
               <button type="submit" class="btn btn-success" [disabled]="!permissionForm.form.valid">Cập nhật</button>
@@ -216,7 +179,6 @@
           </div>
         </form>
       </div>
-
     </div>
   </div>
 </div>
