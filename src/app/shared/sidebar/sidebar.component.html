@@ -1,0 +1,70 @@
+<div class="user">
+  <div class="photo">
+    <img src="../assets/img/faces/marc.jpg">
+  </div>
+  <div class="info">
+    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                           {{user.fullName}}
+                            <b class="caret"></b>
+                        </a>
+    <div class="collapse" id="collapseExample">
+      <ul class="nav">
+        <li>
+          <a href="#">Thông Tin Tài Khoản</a>
+        </li>
+        <li>
+          <a href="#">Đổi mật khẩu</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<ul class="nav">
+  <li routerLinkActive="active">
+    <a routerLink="/main/home/index">
+                    <i class="material-icons">dashboard</i>
+                    <p>Main</p>
+                </a>
+  </li>
+  <li>
+    <a data-toggle="collapse" href="#productNav" aria-expanded="true">
+                    <i class="material-icons">shoping_cart</i>
+                    <p>
+                        Sản phẩm
+                        <b class="caret"></b>
+                    </p>
+                </a>
+    <div class="collapse" aria-expanded="true" id="productNav">
+      <ul class="nav">
+        <li routerLinkActive="active">
+          <a routerLink="/main/product-category/index">Danh mục sản phẩm</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/main/product/index">Sản Phẩm</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    <a href="#userNav" data-toggle="collapse" aria-expanded="true">
+                    <i class="material-icons">account_circle</i>
+                    <p>
+                        Hệ thống
+                        <b class="caret"></b>
+                    </p>
+                </a>
+    <div class="collapse" aria-expanded="true" id="userNav">
+      <ul class="nav">
+        <li routerLinkActive="active">
+          <a routerLink="/main/role/index">Quyền</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/main/function/index">Chức năng</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/main/user/index">Người dùng</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>

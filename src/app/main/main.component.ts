@@ -11,19 +11,12 @@ declare var $: any;
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  user: LoggedInUser;
   constructor(
-    private _untilityService: UtilityService,
-    private authenService: AuthenService) { }
+   ) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem(SystemConstants.CURRENT_USER));
     $.getScript('../assets/js/material-dashboard.js');
     $.material.init();
 
-  }
-  logout() {
-    localStorage.removeItem(SystemConstants.CURRENT_USER);
-    this._untilityService.navigate(UrlConstants.LOGIN);
   }
 }
