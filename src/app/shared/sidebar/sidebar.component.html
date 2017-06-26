@@ -26,43 +26,21 @@
                     <p>Main</p>
                 </a>
   </li>
-  <li>
-    <a data-toggle="collapse" href="#productNav" aria-expanded="true">
-                    <i class="material-icons">shoping_cart</i>
+  <li *ngFor="let item of functions">
+    <a href="#{{item.ID | lowercase}}" data-toggle="collapse" aria-expanded="true">
+      <i class="fa {{item.IconCss}}"></i>
                     <p>
-                        Sản phẩm
-                        <b class="caret"></b>
+                       {{item.Name}} 
+                       <b *ngIf="item.ChildFunctions.length>0" class="caret"></b>
                     </p>
-                </a>
-    <div class="collapse" aria-expanded="true" id="productNav">
+  </a>
+    <div class="collapse" aria-expanded="true" id="{{item.ID | lowercase}}">
       <ul class="nav">
-        <li routerLinkActive="active">
-          <a routerLink="/main/product-category/index">Danh mục sản phẩm</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/main/product/index">Sản Phẩm</a>
-        </li>
-      </ul>
-    </div>
-  </li>
-  <li>
-    <a href="#userNav" data-toggle="collapse" aria-expanded="true">
-                    <i class="material-icons">account_circle</i>
-                    <p>
-                        Hệ thống
-                        <b class="caret"></b>
-                    </p>
-                </a>
-    <div class="collapse" aria-expanded="true" id="userNav">
-      <ul class="nav">
-        <li routerLinkActive="active">
-          <a routerLink="/main/role/index">Quyền</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/main/function/index">Chức năng</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/main/user/index">Người dùng</a>
+        <li *ngFor="let subItem of item.ChildFunctions" routerLinkActive="active">
+          <a routerLink="{{subItem.URL}}">
+                <i class="fa {{item.IconCss}}"></i> 
+                <p>{{subItem.Name}}</p>    
+           </a>
         </li>
       </ul>
     </div>

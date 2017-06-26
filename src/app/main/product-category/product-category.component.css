@@ -1,0 +1,18 @@
+.form-group input[type="file"] {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    opacity: inherit;
+    position: inherit;
+}
+.tree {
+  width: 300px;
+}
+
+tree-node-content{
+  width: 100%;
+}
+.link-icon{
+  font-size: 18px;
+  /*color: #2196F3;*/
+}

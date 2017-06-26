@@ -28,7 +28,6 @@ export class DataService {
     return this._http.get(SystemConstants.BASE_API + url, { headers: this.headers }).map(this.ExtraData);
   }
   post(url: string, data?: any) {
-    debugger;
     this.headers.delete("Authorization");
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
     return this._http.post(SystemConstants.BASE_API + url, data, { headers: this.headers }).map(this.ExtraData);
@@ -43,7 +42,18 @@ export class DataService {
     this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
     return this._http.delete(SystemConstants.BASE_API + url + '/?' + key + '=' + id, { headers: this.headers }).map(this.ExtraData);
   }
-  
+  deleteWithMultiParams(uri: string, params) {
+    this.headers.delete('Authorization');
+
+    this.headers.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);
+    var paramStr: string = '';
+    for (let param in params) {
+      paramStr += param + "=" + params[param] + '&';
+    }
+    return this._http.delete(SystemConstants.BASE_API + uri + "/?" + paramStr, { headers: this.headers })
+      .map(this.ExtraData);
+
+  }
  postFile(uri: string, data?: any) {
     let newHeader = new Headers();
     newHeader.append("Authorization", "Bearer " + this._authenService.getLoggedInUser().access_token);

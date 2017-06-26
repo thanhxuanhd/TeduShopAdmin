@@ -1,0 +1,11 @@
+.form-group input[type="file"] {
+  top: auto;
+  right: auto;
+  bottom: auto;
+  opacity: inherit;
+  position: inherit;
+}
+
+.margin-rigth5 {
+  margin-right: 5px;
+}
