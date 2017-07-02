@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   public checkedItems: any[];
   public filterKeyword: string;
 
+
   /*Product manage */
   public imageEntity: any = {};
   public productImages: any = [];
@@ -78,7 +79,9 @@ export class ProductComponent implements OnInit {
     this._dataService.get('/api/product/getall?page=' + this.pageIndex + '&pageSize=' + this.pageSize + '&keyword=' + this.filterKeyword + '&categoryId=' + this.filterCategoryID)
       .subscribe((response: any) => {
         this.products = response.Items;
+        this.totalRow = response.TotalRows;
         this.pageIndex = response.PageIndex;
+        this.pageSize = response.PageSize;
       }, error => this._dataService.handleError(error));
   }
   public createAlias() {
@@ -130,14 +133,14 @@ export class ProductComponent implements OnInit {
   private saveData() {
     if (this.entity.ID == undefined) {
       this._dataService.post('/api/product/add', JSON.stringify(this.entity)).subscribe((response: any) => {
-        this.search();
+        this.loadData();
         this.addEditModal.hide();
         this._notificationService.printSuccessMessage(MessageContstants.CREATED_OK_MSG);
       });
     }
     else {
       this._dataService.put('/api/product/update', JSON.stringify(this.entity)).subscribe((response: any) => {
-        this.search();
+        this.loadData();
         this.addEditModal.hide();
         this._notificationService.printSuccessMessage(MessageContstants.UPDATED_OK_MSG);
       }, error => this._dataService.handleError(error));
@@ -161,7 +164,7 @@ export class ProductComponent implements OnInit {
     this._notificationService.printConfirmationDialog(MessageContstants.CONFIRM_DELETE_MSG, () => {
       this._dataService.delete('/api/product/deletemulti', 'checkedProducts', JSON.stringify(checkedIds)).subscribe((response: any) => {
         this._notificationService.printSuccessMessage(MessageContstants.DELETED_OK_MSG);
-        this.search();
+        this.loadData();
       }, error => this._dataService.handleError(error));
     });
   }
