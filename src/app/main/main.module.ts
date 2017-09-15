@@ -10,12 +10,13 @@ import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { TopmenuComponent } from '../shared/topmenu/topmenu.component';
 import { DataService } from '../core/services/data.service';
 import { NotificationService } from '../core/services/notification.service';
+import { SignalrService } from '../core/services/signalr.service';
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(mainRouter),
   ],
-  providers: [UtilityService, AuthenService, DataService,NotificationService],
+  providers: [UtilityService, AuthenService, DataService, NotificationService, SignalrService],
   declarations: [MainComponent, SidebarComponent,
     TopmenuComponent]
 })

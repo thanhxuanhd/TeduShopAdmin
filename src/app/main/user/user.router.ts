@@ -7,5 +7,4 @@ export const userRouter: Routes = [
     {
         path: 'index', component: UserComponent
     }
-
 ];

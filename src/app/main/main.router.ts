@@ -13,6 +13,7 @@ export const mainRouter: Routes = [
             { path: 'home', loadChildren: './home/home.module#HomeModule' },
             { path: 'function', loadChildren: './function/function.module#FunctionModule' },
             { path: 'order', loadChildren: './order/order.module#OrderModule' },
+            { path: 'announement', loadChildren: './announcement/announcement.module#AnnouncementModule' },
         ]
     }
 
